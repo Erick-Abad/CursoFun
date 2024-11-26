@@ -1,0 +1,199 @@
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo de la página */
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #004d8f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor Principal */
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px; /* Espacio para que el contenido no se cubra con la barra de navegación */
+  gap: 2rem;
+}
+
+/* Contenedor combinado para formulario e imagen */
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7rem; /* Espacio entre la imagen y el formulario */
+  flex-wrap: wrap; /* Adapta el diseño en pantallas pequeñas */
+  width: 90%;
+  max-width: 950px;
+}
+
+/* Imagen decorativa con altura igual al formulario */
+.login-image {
+  height: 100%; /* Igualar altura al contenedor */
+  max-height: 400px; /* Limitar altura máxima */
+  aspect-ratio: auto; /* Mantener proporciones */
+  object-fit: cover; /* Ajustar la imagen sin distorsionarla */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de inicio de sesión */
+.login-container {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  flex: 1; /* El formulario ocupa el resto del espacio */
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Imagen de logo en el formulario */
+.login-logo {
+  max-width: 50%;
+  height: auto;
+  margin-bottom: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #131e3d;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #131e3d;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 0.9rem;
+  color: #131e3d;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgot-password, .register-link {
+  color: #131e3d;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.login-button {
+  background-color: #131e3d;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.login-button:hover {
+  background-color: #0a1430;
+}
+
+/* Barra de navegación */
+.navbar {
+  width: 100%;
+  background-color: #131e3d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Icono del menú hamburguesa */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.navbar-hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px;
+  transition: 0.3s;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    align-items: center;
+  }
+
+  .login-container {
+    order: -1; /* Coloca el formulario encima de la imagen */
+  }
+
+  .login-image {
+    display: none; /* Oculta la imagen en pantallas pequeñas */
+  }
+}
