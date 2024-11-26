@@ -34,9 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = await response.json();
 
         if (response.ok) {
-          alert(data.message);
+          // Guardar información del usuario en localStorage
+          localStorage.setItem('userName', data.name);
+          localStorage.setItem('userEmail', data.email);
+
+          // Redirigir a Curso.html
+          window.location.href = 'Curso.html';
         } else {
-          alert(data.message);
+          alert(data.message); // Mostrar mensaje de error del backend
         }
       } catch (error) {
         console.error('Error:', error);

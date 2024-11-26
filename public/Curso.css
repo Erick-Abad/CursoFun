@@ -1,0 +1,97 @@
+/* Estilo general */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #004a8f; /* Fondo azul */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    height: 100vh;
+  }
+  
+  .main-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Alinear a la izquierda */
+    padding-left: 50px; /* Espaciado desde el borde izquierdo */
+  }
+  
+  /* Contenedor del perfil */
+  .profile-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Imagen de perfil */
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ddd;
+  }
+  
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Nombre del usuario */
+  .profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  /* Opciones del usuario */
+  .profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .profile-options li {
+    margin: 10px 0;
+  }
+  
+  .profile-options a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #004a8f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-options a:hover {
+    background-color: #f4f4f4;
+  }
+  
+  /* Estilo del botón Salir */
+  .logout {
+    color: #e53935; /* Rojo */
+    font-weight: 700;
+  }
+  
+  /* === Responsividad: Móvil === */
+  @media (max-width: 768px) {
+    body {
+      justify-content: center; /* Centrar el contenedor en móviles */
+    }
+  
+    .main-container {
+      justify-content: center; /* Centrar el contenedor en móviles */
+      padding-left: 0; /* Eliminar espaciado adicional */
+    }
+  }
+  
