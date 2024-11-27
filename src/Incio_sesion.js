@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loginForm.addEventListener('submit', async function (event) {
       event.preventDefault();
 
-      const email = document.getElementById('email').value.trim().toLowerCase(); // Normalización
+      const email = document.getElementById('email').value.trim().toLowerCase();
       const password = document.getElementById('password').value.trim();
 
       if (!email || !password) {
@@ -25,27 +25,22 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         const response = await fetch('http://localhost:3000/api/login', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),
         });
 
         const data = await response.json();
 
         if (response.ok) {
-          // Guardar información del usuario en localStorage
           localStorage.setItem('userName', data.name);
           localStorage.setItem('userEmail', data.email);
-
-          // Redirigir a Curso.html
           window.location.href = 'Curso.html';
         } else {
-          alert(data.message); // Mostrar mensaje de error del backend
+          alert(data.message);
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Hubo un problema al iniciar sesión. Inténtalo de nuevo más tarde.');
+        alert('Hubo un problema al iniciar sesión.');
       }
     });
   }

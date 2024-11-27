@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
 
       const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('register-email').value.trim().toLowerCase(); // Normalización
+      const email = document.getElementById('register-email').value.trim().toLowerCase();
       const password = document.getElementById('register-password').value.trim();
       const confirmPassword = document.getElementById('confirm-password').value.trim();
 
@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         const response = await fetch('http://localhost:3000/api/register', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, password }),
         });
 
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Hubo un problema con el registro. Inténtalo de nuevo más tarde.');
+        alert('Hubo un problema con el registro.');
       }
     });
   }
