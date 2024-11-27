@@ -17,7 +17,7 @@ let users = [];
 
 // Leer usuarios desde el archivo al iniciar el servidor
 if (fs.existsSync(usersFile)) {
-  users = JSON.parse(fs.readFileSync(usersFile, 'utf-8')); 
+  users = JSON.parse(fs.readFileSync(usersFile, 'utf-8'));
   console.log('Usuarios cargados desde el archivo:', users);
 } else {
   console.log('Archivo users.json no encontrado. Se creará automáticamente.');
@@ -79,6 +79,11 @@ app.get('/api/check-users', (req, res) => {
   } else {
     res.status(404).json({ message: 'El archivo users.json no existe.' });
   }
+});
+
+// Ruta para manejar errores en producción
+app.all('*', (req, res) => {
+  res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
 // Iniciar servidor
