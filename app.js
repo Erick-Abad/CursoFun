@@ -63,7 +63,8 @@ app.post('/api/login', (req, res) => {
     return res.status(401).json({ message: 'La contraseña es incorrecta.' });
   }
 
-  res.status(200).json({ message: `Gracias por ingresar, ${user.name}.` });
+  // Devuelve el nombre y el correo del usuario en lugar de un mensaje
+  res.status(200).json({ name: user.name, email: user.email });
 });
 
 // Rutas estáticas y archivos HTML

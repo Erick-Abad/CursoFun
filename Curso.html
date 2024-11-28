@@ -3,30 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curso</title>
-  <link rel="stylesheet" href="/public/style.css">
+  <title>Perfil y Cursos</title>
   <link rel="stylesheet" href="/public/Curso.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Contenedor Principal -->
   <div class="main-container">
+    <!-- Contenedor del Perfil -->
     <div class="profile-container">
-      <!-- Imagen de perfil -->
       <div class="profile-image">
-        <img src="/public/img/default-profile.png" alt="Foto de Perfil">
+        <img id="profilePicture" src="/public/img/default-profile.png" alt="Foto de Perfil">
+        <div class="upload-icon" id="uploadIcon">+</div>
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
       </div>
-      <!-- Nombre de usuario -->
-      <h2 class="profile-name">Erick Abad</h2>
-      <!-- Opciones del usuario -->
+      <h2 class="profile-name" id="profileName">Usuario desconocido</h2>
       <ul class="profile-options">
         <li><a href="#">Mis cursos <span class="icon">🎓</span></a></li>
         <li><a href="#">Mensajes <span class="icon">💬</span></a></li>
         <li><a href="#">Calendario <span class="icon">📅</span></a></li>
         <li><a href="#">Ajustes <span class="icon">⚙️</span></a></li>
-        <li><a href="#" class="logout">Salir</a></li>
+        <li><a href="#" id="logoutButton" class="logout">Salir</a></li>
       </ul>
     </div>
+
+    <!-- Contenedor de los Cursos -->
+    <div class="courses-container">
+      <!-- Curso 1 -->
+      <div class="course-card">
+        <img src="/public/img/Curso/ImagenEditable.png" alt="Imagen del Curso" class="course-image">
+        <div class="course-content">
+          <h3>CURSO #1</h3>
+          <div class="course-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <button class="buy-button">Comprar</button>
+        </div>
+        <img src="/public/img/Curso/carrito-de-compras.png" alt="Carrito de Compras" class="cart-icon">
+      </div>
+
+      <!-- Curso 2 -->
+      <div class="course-card">
+        <img src="/public/img/Curso/ImagenEditable.png" alt="Imagen del Curso" class="course-image">
+        <div class="course-content">
+          <h3>CURSO #2</h3>
+          <div class="course-description">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </div>
+          <button class="buy-button">Comprar</button>
+        </div>
+        <img src="/public/img/Curso/carrito-de-compras.png" alt="Carrito de Compras" class="cart-icon">
+      </div>
+
+      <!-- Curso 3 
+      <div class="course-card">
+        <img src="/public/img/Curso/ImagenEditable.png" alt="Imagen del Curso" class="course-image">
+        <div class="course-content">
+          <h3>CURSO #3</h3>
+          <div class="course-description">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <button class="buy-button">Comprar</button>
+        </div>
+        <img src="/public/img/Curso/carrito-de-compras.png" alt="Carrito de Compras" class="cart-icon">
+      </div>  -->
+
+      <!-- Curso 4 
+      <div class="course-card">
+        <img src="/public/img/Curso/ImagenEditable.png" alt="Imagen del Curso" class="course-image">
+        <div class="course-content">
+          <h3>CURSO #4</h3>
+          <div class="course-description">
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+          <button class="buy-button">Comprar</button>
+        </div>
+        <img src="/public/img/Curso/carrito-de-compras.png" alt="Carrito de Compras" class="cart-icon">
+      </div>-->
+    </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const profilePicture = document.getElementById('profilePicture');
+      const fileInput = document.getElementById('fileInput');
+      const uploadIcon = document.getElementById('uploadIcon');
+      const profileNameElement = document.getElementById('profileName');
+
+      // Cargar el nombre del usuario desde localStorage
+      const userName = localStorage.getItem('userName');
+      if (userName) {
+        profileNameElement.textContent = userName;
+      }
+
+      // Abrir selector de archivos al hacer clic en el ícono "+"
+      uploadIcon.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      // Actualizar foto de perfil
+      fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imageData = e.target.result;
+            profilePicture.src = imageData;
+            localStorage.setItem('profilePicture', imageData); // Guardar imagen
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Cargar foto de perfil guardada
+      const savedImage = localStorage.getItem('profilePicture');
+      if (savedImage) {
+        profilePicture.src = savedImage;
+      }
+
+      // Manejar cierre de sesión
+      document.getElementById('logoutButton').addEventListener('click', function () {
+        localStorage.clear();
+        window.location.href = '/';
+      });
+    });
+  </script>
 </body>
 </html>
